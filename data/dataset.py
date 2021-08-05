@@ -78,7 +78,7 @@ class FDDataset(data.Dataset):
         return len(self.imgs)
 
 if __name__ == '__main__':
-    root = '/home/jaren/data/'
+    root = '/content/drive/MyDrive/Data/Images/'
     transform = transforms.Compose([
         transforms.Scale((100, 100)),       #Switch to the transforms.Resize on the service
         transforms.CenterCrop(96),
