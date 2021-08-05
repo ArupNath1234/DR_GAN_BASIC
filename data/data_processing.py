@@ -148,6 +148,6 @@ def show_sample(sample):
     plt.show()
 
 if __name__ == '__main__':
-    dir = '/home/jaren/data//train'
+    dir = '/content/drive/MyDrive/Data/Images/train'
     samples = make_dataset(dir)
     ids = split_with_same_id(samples)
