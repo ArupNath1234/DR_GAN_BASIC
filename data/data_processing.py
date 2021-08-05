@@ -39,6 +39,7 @@ def make_dataset(dir):
                 path = os.path.join(root, fname)
                 id = get_id(path)
                 pose = get_pose(path)
+                
                 images.append({'path': path,
                                 'id': id,
                                 'pose': pose,
@@ -77,8 +78,18 @@ def get_id(path):
     >>> get_id(path)
     34
     """
-    p = re.compile(r'\d{3}')
-    return int(re.search(p, path).group())
+    p = re.compile(r'\d{2}')
+    
+    k= re.findall(p, path)
+
+    id=int(k[0]);
+    
+    return id;
+
+
+
+
+
 
 def get_pose(path):
     """Return the pose of the image.
@@ -92,9 +103,17 @@ def get_pose(path):
     >>> get_pose(path)
     False
     """
-    p = re.compile(r'front')
-    result = True if re.search(p, path) else False
-    return result
+    
+    p = re.compile(r'\d{2}')
+    m=re.search(p, path)
+    k= re.findall(p, path)
+
+    pose=int(k[2]);
+
+    """result = True if re.search(p, path) else False"""
+    return pose
+
+
 
 def show_sample(sample):
     """
