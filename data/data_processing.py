@@ -107,9 +107,9 @@ def get_pose(path):
     p = re.compile(r'\d{2}')
     m=re.search(p, path)
     k= re.findall(p, path)
-
+    print(k)
     pose=int(k[2]);
-
+    
     """result = True if re.search(p, path) else False"""
     if pose==0:
         return "A"
