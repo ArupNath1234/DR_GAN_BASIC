@@ -103,16 +103,22 @@ def get_pose(path):
     >>> get_pose(path)
     False
     """
+    q = re.compile(r'[+][0]')
+    k= re.findall(q, path)
+    st=str(k[0])
+    pose=int(st[1])
+    if pose==0:
+        return 0
     
     p = re.compile(r'\d{2}')
+    q = re.compiler(r'd{1}')
     m=re.search(p, path)
     k= re.findall(p, path)
     print(k)
     pose=int(k[2]);
     
     """result = True if re.search(p, path) else False"""
-    if pose==0:
-        return 0
+   
     if pose==45:
         return 1
     
