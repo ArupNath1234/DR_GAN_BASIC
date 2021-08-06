@@ -10,7 +10,7 @@ class TrainOptions(BaseOptions):
         self.parser.add_argument('--lr_G', type=float, default=0.0002, help='initial learning rate of Generator')
         self.parser.add_argument('--lr_D', type=float, default=0.0002, help='initial learning rate of Discriminator')
         self.parser.add_argument('--count_epoch', type=int, default=0, help='the starting count epoch count')
-        self.parser.add_argument('--epochs', type=int, default=5, help='number of epochs for train')
+        self.parser.add_argument('--epochs', type=int, default=1000, help='number of epochs for train')
         self.parser.add_argument('--beta1', type=float, default=0.5, help='adam optimizer parameter')
         self.parser.add_argument('--beta2', type=float, default=0.999, help='adam optimizer parameter')
         self.parser.add_argument('--save_epoch_freq', type=int, default=5, help='frequency of saving the latest results')
