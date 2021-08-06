@@ -62,4 +62,4 @@ class FDDataset(data.Dataset):
         return lst
 
     def __len__(self):
-        return 450
+        return 70
