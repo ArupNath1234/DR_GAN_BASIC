@@ -108,7 +108,7 @@ def get_pose(path):
     m=re.search(p, path)
     k= re.findall(p, path)
     print(k)
-    pose=int(k[2]);
+    pose=int(k[1]);
     
     """result = True if re.search(p, path) else False"""
     if pose==0:
