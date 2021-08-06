@@ -111,7 +111,12 @@ def get_pose(path):
     pose=int(k[2]);
 
     """result = True if re.search(p, path) else False"""
-    return pose
+    if pose==0:
+        return "A"
+    if pose==45:
+        return "B"
+    
+    return "C"
 
 
 
@@ -148,6 +153,6 @@ def show_sample(sample):
     plt.show()
 
 if __name__ == '__main__':
-    dir = '/content/drive/MyDrive/Data/Images/train'
+    dir = '/home/jaren/data//train'
     samples = make_dataset(dir)
     ids = split_with_same_id(samples)
