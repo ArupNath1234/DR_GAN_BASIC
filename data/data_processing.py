@@ -112,10 +112,9 @@ def get_pose(path):
         pose=int(st[6])
         #print("pose= ",pose)
         if pose==0:
-            return 0
+            return True
     
     p = re.compile(r'\d{2}')
-    m=re.search(p, path)
     k= re.findall(p, path)
     #print(k)
     pose=int(k[2]);
@@ -123,24 +122,11 @@ def get_pose(path):
     """result = True if re.search(p, path) else False"""
    
     if pose==45:
-        return 1
+        return False
     
-    return 2
+    return False
     
-    p = re.compile(r'\d{2}')
-    q = re.compiler(r'd{1}')
-    m=re.search(p, path)
-    k= re.findall(p, path)
-    print(k)
-    pose=int(k[2]);
-    
-    """result = True if re.search(p, path) else False"""
    
-    if pose==45:
-        return 1
-    
-    return 2
-
 
 
 def show_sample(sample):
