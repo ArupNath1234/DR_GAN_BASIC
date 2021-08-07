@@ -6,7 +6,7 @@ from torchvision import transforms
 import math
 
 IMG_EXTENSIONS = [
-    '.jpg', '.JPG', '.jpeg', '.JPEG',
+    '.jpg', '.JPG', '.Jpg','.jpeg', '.JPEG',
     '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP',
 ]
 
