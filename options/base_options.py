@@ -26,7 +26,7 @@ class BaseOptions(object):
         self.parser.add_argument('--test_dir', type=str, default=result, help='the dir to save the result')
 
         self.parser.add_argument('--model', type=str, default='single', help='single/multi')
-        self.parser.add_argument('--N_p', type=int, default=3, help='the sum of the poses')
+        self.parser.add_argument('--N_p', type=int, default=2, help='the sum of the poses')
         self.parser.add_argument('--N_d', type=int, default=70, help='the sum of the identities')
         self.parser.add_argument('--N_z', type=int, default=50, help='the sum of the noise')
 
