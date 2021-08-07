@@ -112,7 +112,7 @@ def get_pose(path):
         pose=int(st[6])
         #print("pose= ",pose)
         if pose==0:
-            return True
+            return 0
     
     p = re.compile(r'\d{2}')
     k= re.findall(p, path)
@@ -122,9 +122,9 @@ def get_pose(path):
     """result = True if re.search(p, path) else False"""
    
     if pose==45:
-        return False
+        return 1
     
-    return False
+    return 2
     
    
 
