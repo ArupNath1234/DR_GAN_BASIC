@@ -2,13 +2,13 @@ import time
 import sys 
 from tensorboardX import SummaryWriter
 sys.path.append('options')
-from train_options import TrainOptions
+from options.train_options import TrainOptions
 sys.path.append('data')
-from data_loader import CreateDataLoader
+from data.data_loader import CreateDataLoader
 sys.path.append('model')
-from model_Loader import CreateModel
+from model.model_Loader import CreateModel
 sys.path.append('util')
-from utils import error as err
+from util.utils import error as err
 
 opt = TrainOptions().parse()
 data_loader = CreateDataLoader(opt)
