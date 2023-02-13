@@ -5,7 +5,7 @@ import numpy as np
 import torch.utils.data as data
 import torchvision.transforms as transforms
 
-from data_processing import *
+from data.data_processing import *
 
 class FDDataset(data.Dataset):
     """The class of  dataset.
