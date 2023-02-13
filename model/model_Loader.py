@@ -3,10 +3,10 @@ import torch
 def CreateModel(opt):
     model = None
     if opt.model == 'single':
-        from DRGAN import Single_DRGAN
+        from model.DRGAN import Single_DRGAN
         model = Single_DRGAN()
     elif opt.model == 'multi':
-        from DRGAN import Multi_DRGAN
+        from model.DRGAN import Multi_DRGAN
         model = Multi_DRGAN()
     else:
         raise ValueError('Model {} not recongnized.'.format(opt.model))
