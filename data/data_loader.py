@@ -9,7 +9,7 @@ def CreateDataLoader(opt):
     """
     import sys
     sys.path.append('/home/zhangjunhao/data')
-    from dataset import FDDataset
+    from data.dataset import FDDataset
     transform = transforms.Compose([
         transforms.Scale((100, 100)),       #Switch to the transforms.Resize on the service
         transforms.RandomCrop(96),
