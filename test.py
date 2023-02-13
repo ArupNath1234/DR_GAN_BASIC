@@ -1,11 +1,11 @@
 import torch
 import sys
 sys.path.append('/home/zhangjunhao/options')
-from test_options import TestOptions
+from options.test_options import TestOptions
 sys.path.append('/home/zhangjunhao/data')
-from data_loader import CreateDataLoader
+from data.data_loader import CreateDataLoader
 sys.path.append('/home/zhangjunhao/model')
-from model_Loader import CreateModel
+from model.model_Loader import CreateModel
  
 opt = TestOptions().parse()
 
