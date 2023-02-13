@@ -5,7 +5,7 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import sys
 sys.path.append('/home/zhangjunhao/data')
-from data_processing import *
+from data.data_processing import *
 
 class FDDataset(data.Dataset):
     """The class of  dataset.

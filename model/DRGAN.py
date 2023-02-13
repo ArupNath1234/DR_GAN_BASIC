@@ -9,12 +9,12 @@ import numpy as np
 import gc
 import torch.cuda
 
-from Component import Generator
-from Component import Discriminator
-from Component import one_hot
-from Component import weights_init_normal
-from Component import Tensor2Image
-from base_model import BaseModel
+from model.Component import Generator
+from model.Component import Discriminator
+from model.Component import one_hot
+from model.Component import weights_init_normal
+from model.Component import Tensor2Image
+from model.base_model import BaseModel
 
 
 class Single_DRGAN(BaseModel):
