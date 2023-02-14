@@ -436,10 +436,11 @@ class Multi_DRGAN(BaseModel):
         self.Loss_D = sum(self.Loss_D)
         self.Loss_D.backward()
 
-    def optimize_G_parameters(self):
+    def optimize_G_parameters(self,temp):
         self.optimizer_G.zero_grad()
         self.backward_G()
-        self.optimizer_G.step()
+        if temp==True:
+          self.optimizer_G.step()
 
     def optimize_D_parameters(self):
         self.optimizer_D.zero_grad()
