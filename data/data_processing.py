@@ -6,7 +6,7 @@ from torchvision import transforms
 import math
 
 IMG_EXTENSIONS = [
-    '.jpg', '.JPG', '.jpeg', '.JPEG',
+    '.jpg', '.JPG', '.Jpg','.jpeg', '.JPEG',
     '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP',
 ]
 
@@ -39,6 +39,7 @@ def make_dataset(dir):
                 path = os.path.join(root, fname)
                 id = get_id(path)
                 pose = get_pose(path)
+                
                 images.append({'path': path,
                                 'id': id,
                                 'pose': pose,
@@ -77,8 +78,18 @@ def get_id(path):
     >>> get_id(path)
     34
     """
-    p = re.compile(r'\d{3}')
-    return int(re.search(p, path).group())
+    p = re.compile(r'\d{2}')
+    
+    k= re.findall(p, path)
+
+    id=int(k[0]);
+    
+    return id;
+
+
+
+
+
 
 def get_pose(path):
     """Return the pose of the image.
@@ -92,9 +103,31 @@ def get_pose(path):
     >>> get_pose(path)
     False
     """
-    p = re.compile(r'front')
-    result = True if re.search(p, path) else False
-    return result
+    q = re.compile(r'[_]\d{2}[_][0]')
+    
+    if  re.search(q, path):
+        k= re.findall(q, path)
+        #print(k)
+        st=str(k)
+        pose=int(st[6])
+        #print("pose= ",pose)
+        if pose==0:
+            return 0
+    
+    p = re.compile(r'\d{2}')
+    k= re.findall(p, path)
+    #print(k)
+    pose=int(k[2]);
+    
+    """result = True if re.search(p, path) else False"""
+   
+    if pose==45:
+        return 1
+    
+    return 2
+    
+   
+
 
 def show_sample(sample):
     """
