@@ -25,7 +25,7 @@ class BaseOptions(object):
         self.parser.add_argument('--pretrained_G', type=str, default=None, help='the name of the pretrained generator model to be loaded.')
         self.parser.add_argument('--test_dir', type=str, default=result, help='the dir to save the result')
 
-        self.parser.add_argument('--model', type=str, default='single', help='single/multi')
+        self.parser.add_argument('--model', type=str, default='multi', help='single/multi')
         self.parser.add_argument('--N_p', type=int, default=13, help='the sum of the poses')
         self.parser.add_argument('--N_d', type=int, default=1000, help='the sum of the identities')
         self.parser.add_argument('--N_z', type=int, default=50, help='the sum of the noise')
