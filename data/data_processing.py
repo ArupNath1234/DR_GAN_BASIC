@@ -96,7 +96,7 @@ def get_id(path,fname):
 
 
     
-    return id;
+    return int(id);
 
 
 
@@ -167,17 +167,17 @@ def get_pose(path,fname):
     elif (int(pose)>50 and int(pose)<=90):
         return 6
     elif (int(pose)<-1 and int(pose)>=-10):
-        return -1
+        return 7
     elif (int(pose)<-10 and int(pose)>=-20):
-        return -2
+        return 8
     elif (int(pose)<-20 and int(pose)>=-30):
-        return -3
+        return 9
     elif (int(pose)<-30 and int(pose)>=-40):
-        return -4
+        return 10
     elif (int(pose)<-40 and int(pose)>=-50):
-        return -5
+        return 11
     elif (int(pose)<-50 and int(pose)>=-90):
-        return -6
+        return 12
     else:
         return 9999
         
