@@ -37,13 +37,13 @@ def make_dataset(dir):
         for fname in fnames:
             if is_image_file(fname):
                 path = os.path.join(root, fname)
-                id = get_id(path)
-                pose = get_pose(path)
-                
-                images.append({'path': path,
-                                'id': id,
-                                'pose': pose,
-                                'name': fname})
+                id = get_id(path,fname)
+                pose = get_pose(path,fname)
+                if pose != 9999:
+                    images.append({'path': path,
+                                    'id': id,
+                                    'pose': pose,
+                                    'name': fname})
 
     return images
 
@@ -68,7 +68,7 @@ def split_with_same_id(samples):
 def default_loader(path):
     return Image.open(path).convert('RGB')
 
-def get_id(path):
+def get_id(path,fname):
     """Return the id of the image.
 
     >>> path = '/home/jaren/data/train//001/front_1.jpg'
@@ -78,11 +78,23 @@ def get_id(path):
     >>> get_id(path)
     34
     """
-    p = re.compile(r'\d{2}')
+    '''p = re.compile(r'\d{2}')
     
     k= re.findall(p, path)
 
     id=int(k[0]);
+    '''
+    id=''
+    for i in range(len(fname)):
+        if fname[i] == '_':
+            for j in range(i+1,len(fname)):
+                if fname[j]=='_':
+                    break
+                else:
+                    id=id+fname[j]
+            break
+
+
     
     return id;
 
@@ -91,7 +103,7 @@ def get_id(path):
 
 
 
-def get_pose(path):
+def get_pose(path,fname):
     """Return the pose of the image.
     profile->False
     Frontal->True
@@ -103,7 +115,7 @@ def get_pose(path):
     >>> get_pose(path)
     False
     """
-    q = re.compile(r'[_]\d{2}[_][0]')
+    ''' q = re.compile(r'[_]\d{2}[_][0]')
     
     if  re.search(q, path):
         k= re.findall(q, path)
@@ -124,7 +136,52 @@ def get_pose(path):
     if pose==45:
         return 1
     
-    return 2
+    return 2'''
+
+    pose=''
+    count=0
+    for i in range(len(fname)):
+        if fname[i] == '_':
+            count+=1
+        if(count<2):
+            continue
+        
+        for j in range(i+1,len(fname)):
+            if fname[j]=='.':
+                break
+            else:
+                pose=pose+fname[j]
+        break
+    if(int(pose)==0):
+        return 0
+    elif (int(pose)>0 and int(pose)<=10):
+        return 1
+    elif (int(pose)>10 and int(pose)<=20):
+        return 2
+    elif (int(pose)>20 and int(pose)<=30):
+        return 3
+    elif (int(pose)>30 and int(pose)<=40):
+        return 4
+    elif (int(pose)>40 and int(pose)<=50):
+        return 5
+    elif (int(pose)>50 and int(pose)<=90):
+        return 6
+    elif (int(pose)<-1 and int(pose)>=-10):
+        return -1
+    elif (int(pose)<-10 and int(pose)>=-20):
+        return -2
+    elif (int(pose)<-20 and int(pose)>=-30):
+        return -3
+    elif (int(pose)<-30 and int(pose)>=-40):
+        return -4
+    elif (int(pose)<-40 and int(pose)>=-50):
+        return -5
+    elif (int(pose)<-50 and int(pose)>=-90):
+        return -6
+    else:
+        return 9999
+        
+
     
    
 
