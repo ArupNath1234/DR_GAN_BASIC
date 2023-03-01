@@ -54,13 +54,19 @@ def split_with_same_id(samples):
     result = []
     if len(samples)==0:
         return result
-
+    temp0=[]
     result.append([samples[0]])
     for i in range(1, len(samples)):
-        if samples[i-1]['id']==samples[i]['id']:
+        if samples[i-1]['id']==samples[i]['id'] and len(result[-1])<200:
             result[-1].append(samples[i])
+            if samples[i]['pose']==0:
+                temp0=samples[i]
         else:
-            result.append([samples[i]])
+            if len(result[-1])>=200 and temp0['id']==samples[i]['id']:
+                result.append([temp0])
+                result[-1].append(samples[i])
+            else:
+                result.append([samples[i]])
 
     return result
 
