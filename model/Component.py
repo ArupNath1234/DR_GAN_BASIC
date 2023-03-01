@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.nn.init as init
 from torchvision import transforms
+import gc
 
 def Tensor2Image(img):
     """
@@ -259,6 +260,9 @@ class Generator(nn.Module):
 
     def forward(self, input, pose, noise):
         x = self.enc(input)
+        del input
+        gc.collect()
+
         # print('{0}/t{1}/t{2}'.format(x.size(), pose.size(), noise.size()))
         x = torch.cat((x, pose, noise), 1)
         x = self.dec(x)
@@ -301,6 +305,8 @@ class Discriminator(nn.Module):
 
     def forward(self,input):
         x = self.conv_layers(input)
+        del input
+        gc.collect()
         x = x.view(-1, 320)
         x = self.fc(x)
         return x
