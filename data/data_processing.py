@@ -152,9 +152,9 @@ def get_pose(path,fname):
             else:
                 pose=pose+fname[j]
         break
-    if(int(pose)==0):
+    if(int(pose)>=-2 and int(pose)<=2):
         return 0
-    elif (int(pose)>0 and int(pose)<=10):
+    elif (int(pose)>2 and int(pose)<=10):
         return 1
     elif (int(pose)>10 and int(pose)<=20):
         return 2
@@ -166,7 +166,7 @@ def get_pose(path,fname):
         return 5
     elif (int(pose)>50 and int(pose)<=90):
         return 6
-    elif (int(pose)<-1 and int(pose)>=-10):
+    elif (int(pose)<-2 and int(pose)>=-10):
         return 7
     elif (int(pose)<-10 and int(pose)>=-20):
         return 8
