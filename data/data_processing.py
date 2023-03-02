@@ -55,18 +55,31 @@ def split_with_same_id(samples):
     if len(samples)==0:
         return result
     temp0=[]
+    count=False
     result.append([samples[0]])
+    if samples[0]['pose']==0:
+        count=True
     for i in range(1, len(samples)):
         if samples[i-1]['id']==samples[i]['id'] and len(result[-1])<200:
             result[-1].append(samples[i])
             if samples[i]['pose']==0:
                 temp0=samples[i]
+                count=True
+
         else:
-            if len(result[-1])>=200 and temp0['id']==samples[i]['id']:
+            if len(temp0)!=0 and temp0['id']==samples[i]['id'] and len(result[-1])>=200:
                 result.append([temp0])
                 result[-1].append(samples[i])
+                if samples[i]['pose']==0:
+                    count=False
             else:
+                if count==False:
+                    result.pop()
                 result.append([samples[i]])
+                if samples[i]['pose']==0:
+                    count=True
+                else:
+                    count=False
 
     return result
 
@@ -158,11 +171,11 @@ def get_pose(path,fname):
             else:
                 pose=pose+fname[j]
         break
-    if(int(pose)>=-5 and int(pose)<=5):
+    if(int(pose)>=-3 and int(pose)<=3):
         return 0
-    elif (int(pose)>5 and int(pose)<=13):
+    elif (int(pose)>3 and int(pose)<=12):
         return 1
-    elif (int(pose)>13 and int(pose)<=21):
+    elif (int(pose)>12 and int(pose)<=21):
         return 2
     elif (int(pose)>21 and int(pose)<=30):
         return 3
@@ -172,9 +185,9 @@ def get_pose(path,fname):
         return 5
     elif (int(pose)>50 and int(pose)<=90):
         return 6
-    elif (int(pose)<-5 and int(pose)>=-13):
+    elif (int(pose)<-3 and int(pose)>=-12):
         return 7
-    elif (int(pose)<-13 and int(pose)>=-21):
+    elif (int(pose)<-12 and int(pose)>=-21):
         return 8
     elif (int(pose)<-21 and int(pose)>=-30):
         return 9
